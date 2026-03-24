@@ -32,7 +32,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="icon" href="./static/images/1_cut.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -51,34 +51,12 @@
     </a>
   </div>
   <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://keunhong.com">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
+    <div class="navbar-start" style="flex-grow: 1;"></div>
+    <div class="navbar-end">
+      <a class="navbar-item">
+        <img src="./static/images/icra2026.png" alt="ICRA 2026" style="max-height: 5rem;">
       </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More Research
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
-          </a>
-        </div>
-      </div>
     </div>
-
   </div>
 </nav>
 
@@ -227,10 +205,11 @@
 
     <br/>
 
-    <!-- SE(3) Propagation. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">SE(3) IMU Propagation</h2>
+    <!-- SE(3) Propagation & UAMC. -->
+    <div class="columns is-centered">
+
+      <div class="column has-text-centered">
+        <h2 class="title is-3">IMU Propagation on SE(3) manifold</h2>
         <div class="content has-text-justified">
           <p>
             Unlike conventional methods that propagate rotation and translation separately on their
@@ -239,10 +218,24 @@
             rotational variation, yielding more accurate motion prediction.
           </p>
         </div>
-        <img src="./static/images/pse3.png" alt="SE(3) Propagation" style="width: 90%;">
+        <img src="./static/images/pse3.png" alt="SE(3) Propagation" style="width: 100%;">
       </div>
+
+      <div class="column has-text-centered">
+        <h2 class="title is-3">Uncertainty-Aware Motion Compensation (UAMC)</h2>
+        <div class="content has-text-justified">
+          <p>
+            SE(3)-LIO formally derives the joint distribution of the predicted poses, enabling
+            precise characterization of the relative transformation uncertainty by considering
+            their correlation. This uncertainty is incorporated into the measurement noise during
+            motion compensation to construct a probabilistic undistorted point cloud.
+          </p>
+        </div>
+        <img src="./static/images/uamc_analysis.png" alt="UAMC" style="width: 100%;">
+      </div>
+
     </div>
-    <!--/ SE(3) Propagation. -->
+    <!--/ SE(3) Propagation & UAMC. -->
 
   </div>
 </section>
@@ -250,12 +243,55 @@
 
 
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Qualitative Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Qualitative Results</h2>
+
+        <!-- NTU-VIRAL -->
+        <h3 class="title is-4">NTU-VIRAL Dataset</h3>
+        <div class="content has-text-justified">
+          <p>
+            Qualitative comparison on the <i>spms</i> sequence of the NTU-VIRAL dataset, which features
+            aggressive motion with rapid rotations and high accelerations.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video controls muted loop playsinline width="100%">
+            <source src="./static/videos/NTU_comaprison.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- Ours -->
+        <h3 class="title is-4" style="margin-top: 2rem;">Our Dataset</h3>
+        <div class="content has-text-justified">
+          <p>
+            Qualitative comparison on the <i>CW</i> sequence of our dataset, collected in large-scale
+            rough terrain with wild fluctuations and degraded measurements due to dense vegetation and
+            extensive open spaces.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video controls muted loop playsinline width="100%">
+            <source src="./static/videos/boeun_comparison.mp4" type="video/mp4">
+          </video>
+        </div>
+
+      </div>
+    </div>
+    <!--/ Qualitative Results. -->
+  </div>
+</section>
+
+
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@inproceedings{shin2026icra,
   author    = {Shin, Gunhee and Lee, Seungjae and Kong, Jei and Seo, Youngwoo and Myung, Hyun},
-  title     = {{SE(3)-LIO}: Smooth {IMU} Propagation With Jointly Distributed Poses on {SE(3)} Manifold for Accurate and Robust {LiDAR}-Inertial Odometry},
+  title     = {SE(3)-LIO: Smooth IMU Propagation With Jointly Distributed Poses on SE(3) Manifold for Accurate and Robust LiDAR-Inertial Odometry},
   booktitle = {Proc. of the IEEE Int. Conf. on Robotics and Automation (ICRA)},
   year      = {2026},
 }</code></pre>
